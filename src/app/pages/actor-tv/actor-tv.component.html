@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-4 col-lg-3 col-xl-2 col-sm-6" *ngFor="let actor of Actors">
+    <div class="card my-2" >
+      <a [routerLink]="['/movie', actor.id]">
+          <img class="card-img-top" [src]="'https://image.tmdb.org/t/p/w300'+actor.profile_path" [alt]="actor.name" *ngIf="actor.profile_path">
+          <img class="card-img-top" src="https://imgs.search.brave.com/V5orr0R0P5Vx8YYWkrmYJTotoSzjTLhLTyc9exqwack/rs:fit:512:512:1/g:ce/aHR0cDovL2dldGRy/YXdpbmdzLmNvbS9m/cmVlLWljb24tYncv/YW5vbnltb3VzLXBl/cnNvbi1pY29uLTcu/cG5n" [alt]="actor.name" *ngIf="!actor.profile_path">
+      </a>
+      <div class="card-body">
+          <h6 class="card-title">{{ actor.name}}</h6>
+          <span class="badge bg-success"> {{ actor.popularity | number:'1.0-0' }}</span>
+      </div>
+  </div>
+  </div>
+</div>

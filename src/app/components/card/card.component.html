@@ -1,0 +1,12 @@
+
+<div class="card my-2">
+    <a [routerLink]="['/movie', item.id]">
+        <img class="card-img-top" [src]="'https://image.tmdb.org/t/p/w300'+item.poster_path" [alt]="item.original_title">
+    </a>
+    <div class="card-body">
+      <div class="row GB">
+        <h6 class="card-title col-9">{{ item.original_title }}</h6>
+        <h6 class="card-title col-3">{{ item.vote_average }} ☆</h6>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+
+
+<p-sidebar [(visible)]="sidebarVisible">
+  <div class="row my-container">
+    <div class="col-md-2">
+      <div *ngFor="let genre of genres">
+        <a [routerLink]="['drama', genre.id]">{{genre.name}}</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+
+    </div>
+  </div>
+</p-sidebar>
+<p-button (click)="sidebarVisible = true" (click)="show()" icon="pi pi-arrow-right"></p-button>
+<div *ngIf="!showRouterOutlet">
+  <div class="row">
+    <div class="col-md-4 col-lg-3 col-xl-2 col-sm-6" *ngFor="let popular of searchMovies">
+      <app-card [item]="popular"></app-card>
+    </div>
+  </div>
+</div>
+<div *ngIf="showRouterOutlet">
+  <router-outlet></router-outlet>
+</div>

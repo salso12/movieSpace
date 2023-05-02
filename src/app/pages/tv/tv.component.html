@@ -1,0 +1,65 @@
+<!-- <div class="row">
+  <div class="col-12">
+    <div class="mb-3">
+      <input type="text"
+        class="form-control" name="jd" id="" aria-describedby="helpId" placeholder="" [(ngModel)]="search" (change)="searchMovie(search)">
+      <small id="helpId" class="form-text text-muted">Help text</small>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-lg-3 col-xl-2 col-sm-6" *ngFor="let popular of searchMovies">
+      <app-card [item]="popular"></app-card>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-12">
+    <form class="form my-4" >
+      <label for="search">
+          <input class="input" name="jd" type="text" required="" placeholder="Search twitter" id="search" [(ngModel)]="search" (change)="searchTv(search)">
+          <div class="fancy-bg"></div>
+          <div class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                  <g>
+                      <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                  </g>
+              </svg>
+          </div>
+          <button class="close-btn" type="reset">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+          </button>
+      </label>
+  </form>
+  </div>
+
+  <div *ngIf="TvShows.length > 0">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 col-xl-2 col-sm-6" *ngFor="let tv of TvShows">
+        <div class="card my-2">
+          <a [routerLink]="['/tv', tv.id]">
+              <img class="card-img-top" [src]="'https://image.tmdb.org/t/p/w300'+tv.poster_path" [alt]="tv.name" *ngIf="tv.poster_path">
+              <img class="card-img-top" src="https://e0.pxfuel.com/wallpapers/356/666/desktop-wallpaper-movietime-popcorn-film-others.jpg" [alt]="tv.name" *ngIf="!tv.poster_path">
+          </a>
+          <div class="card-body">
+              <h6 class="card-title">{{ tv.name }}</h6>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="TvShows.length == 0">
+    <div class="row text-center">
+      <div class="col-md-6 mx-auto">
+       <h1 class="alert alert-dark">  No movies found </h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <p-paginator (onPageChange)="paginate($event)" [rows]="20" [totalRecords]="752594"> </p-paginator>
+  </div>
+</div>
+
